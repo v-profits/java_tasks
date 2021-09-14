@@ -3,53 +3,36 @@ import java.util.Map;
 
 public class Main {
     public static void main(String[] args) {
-        String str = "Подсчет повторяющихся символов. Написать программу, " +
-                "которая подсчитывает повторяющиеся символы в заданной строке.";
+        String str = "Отыскание первого неповторяющегося символа. Написать программу, которая возвращает первый неповторяющийся (некратный) символ в заданной строке.";
         char[] arr = str.toCharArray();
         System.out.println(arr);
-        Map<Character,Integer> map = new HashMap<>();
 
+        Map<Character,Integer>map = new HashMap<>();
         int j;
-        for (char ch : arr) { //перебор элементов arr
-            if (map.containsKey(ch)) { //возвращает true, если коллекция содержит ключ arr[i]
-                j = map.get(ch) + 1; //возвращает значение объекта
-                map.replace(ch, j); //заменить элемент
+        for (char ch : arr) {
+            if (map.containsKey(ch)) {
+                j = map.get(ch) + 1;
+                map.replace(ch, j); //если ключ/значение есть - меняет значение
             }
-            else
-                map.put(ch, 1);//добавить элемент
+            else map.put(ch, 1); //добавляет ключ/значение
         }
-        System.out.println(map); //выводим все ключ/значение
-
-        int k = 1;
-//        System.out.print('{');
-//        for(Map.Entry<Character,Integer>item : map.entrySet()) { //перебор элементов map
-//            if(item.getValue() != 1 && map.size() != k)
-//                System.out.printf("%s=%d, ", item.getKey(), item.getValue());
-//            else if(item.getValue() != 1)
-//                System.out.printf("%s=%d", item.getKey(), item.getValue());
-//            ++k;
+//        System.out.println(map);
+//        for (Integer value : map.values()) { //map.values() - все значения
+//            System.out.println(value);
 //        }
-//        System.out.print('}');
-//        k = 1;
-//        System.out.println();
 
-        System.out.print('{');
-        for(Character key : map.keySet()) { //перебор ключей map
-            if(map.get(key) != 1 && map.size() != k)
-                System.out.printf("%s=%d, ", key, map.get(key));
-            else if(map.get(key) != 1)
-                System.out.printf("%s=%d", key, map.get(key));
-            ++k;
+        for (Character ch : map.keySet()) { //map.keySet() - все ключи
+            if (map.get(ch) == 1) { //map.get(ch) - значение по ключу
+                System.out.println(ch);
+                break;
+            }
         }
-        System.out.print('}');
     }
 }
 
-//1.  Подсчет повторяющихся символов. Написать программу,
-// которая подсчитывает повторяющиеся символы в заданной строке.
+//1.2.  Отыскание первого неповторяющегося символа. Написать программу,
+//        которая возвращает первый неповторяющийся (некратный) символ в заданной строке.
 
-//https://metanit.com/java/tutorial/5.8.php
-//https://hr-vector.com/java/hashmap
 
 
 
